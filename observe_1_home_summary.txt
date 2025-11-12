@@ -6,34 +6,34 @@
       <header>
         <div>
           <div>
-            <a ax-id=aid-13 href=/> NotePick
+            <a ax-id=aid-1 href=/> NotePick
               <h1> NotePick
             <nav>
-              <a ax-id=aid-1 href=/> 홈
-              <a ax-id=aid-16 href=/products> 전체
+              <a ax-id=aid-9 href=/> 홈
+              <a ax-id=aid-10 href=/products> 전체
       <section>
         <div>
           <h2> 요즘 핫한 제품 🔥
           <p> 지금 가장 많이 팔리는 인기 상품을 확인하세요
           <div>
-            <a ax-id=aid-23 href=/product/4> 1위: ASUS VivoBook
-            <a ax-id=aid-11 href=/product/6> 2위: Lenovo ThinkPad
-            <a ax-id=aid-15 href=/product/12> 3위: MSI Prestige
-            <a ax-id=aid-20 href=/product/3> 4위: Apple MacBook
-            <a ax-id=aid-22 href=/product/18> 5위: Dell Inspiron
+            <a ax-id=aid-3 href=/product/16> 1위: LG 울트라PC
+            <a ax-id=aid-17 href=/product/5> 2위: Dell XPS
+            <a ax-id=aid-12 href=/product/17> 3위: ASUS ZenBook
+            <a ax-id=aid-14 href=/product/19> 4위: MSI Creator
+            <a ax-id=aid-21 href=/product/10> 5위: Acer Swift
       <section>
         <img alt=25% Christmas Sale>
       <section>
         <div>
           <h3> 추천 상품
-          <a ax-id=aid-10 href=/products> 전체보기
-            <button ax-id=aid-17> 전체보기
+          <a ax-id=aid-23 href=/products> 전체보기
+            <button ax-id=aid-6> 전체보기
         <div>
           <div>
             <div>
               <div> 지금 인기
               <div> 오늘만 특가
-            <a ax-id=aid-3 href=/product/2> MSI GT76 Titan DT 9SG 4.8 (456) 3,200,000원
+            <a ax-id=aid-20 href=/product/2> MSI GT76 Titan DT 9SG 4.8 (456) 3,200,000원
               <div>
                 <img alt=MSI GT76 Titan DT 9SG>
               <div>
@@ -45,7 +45,7 @@
               <div> 추천
               <div> 신상품
               <div> 무료배송
-            <a ax-id=aid-6 href=/product/3> Apple MacBook Air 13 M2 4.7 (892) 1,590,000원
+            <a ax-id=aid-15 href=/product/3> Apple MacBook Air 13 M2 4.7 (892) 1,590,000원
               <div>
                 <img alt=Apple MacBook Air 13 M2>
               <div>
@@ -58,7 +58,7 @@
               <div> 13% 할인
               <div> 무이자 할부
               <div> 인기
-            <a ax-id=aid-21 href=/product/7> HP Pavilion Gaming 15-ec2 4.3 (289) 1,490,000원 13% 할인 1,415,500원 추가할인 1,290,000원
+            <a ax-id=aid-8 href=/product/7> HP Pavilion Gaming 15-ec2 4.3 (289) 1,490,000원 13% 할인 1,415,500원 추가할인 1,290,000원
               <div>
                 <img alt=HP Pavilion Gaming 15-ec2>
               <div>
@@ -73,25 +73,25 @@
               <p> 노트북과 함께 구매하면 10% 추가 할인
             <div>
               <button ax-id=aid-4 data-testid=button-carousel-prev>
-              <button ax-id=aid-8 data-testid=button-carousel-next>
+              <button ax-id=aid-18 data-testid=button-carousel-next>
           <div>
             <div>
               <div ax-id=aid-19 data-testid=card-mouse-m1>
                 <div>
                 <div>
-              <div ax-id=aid-12 data-testid=card-mouse-m2>
+              <div ax-id=aid-24 data-testid=card-mouse-m2>
                 <div>
                 <div>
-              <div ax-id=aid-5 data-testid=card-mouse-m3>
+              <div ax-id=aid-7 data-testid=card-mouse-m3>
                 <div>
                 <div>
-              <div ax-id=aid-18 data-testid=card-mouse-m4>
+              <div ax-id=aid-13 data-testid=card-mouse-m4>
                 <div>
                 <div>
-              <div ax-id=aid-9 data-testid=card-mouse-m5>
+              <div ax-id=aid-5 data-testid=card-mouse-m5>
                 <div>
                 <div>
-              <div ax-id=aid-14 data-testid=card-mouse-m6>
+              <div ax-id=aid-11 data-testid=card-mouse-m6>
                 <div>
                 <div>
       <section>
@@ -100,7 +100,7 @@
             <div>
               <div> 카드 즉시 할인
               <div> 베스트셀러
-            <a ax-id=aid-24 href=/product/5> Dell XPS 13 Plus 9320 4.6 (323) 1,890,000원
+            <a ax-id=aid-2 href=/product/5> Dell XPS 13 Plus 9320 4.6 (323) 1,890,000원
               <div>
                 <img alt=Dell XPS 13 Plus 9320>
               <div>
@@ -112,7 +112,7 @@
             <div>
               <div> 내일배송
               <div> 베스트
-            <a ax-id=aid-7 href=/product/1> LG 그램 17Z90R 4.5 (234) 2,590,000원 8% 할인 2,460,500원 추가할인 2,390,000원
+            <a ax-id=aid-22 href=/product/1> LG 그램 17Z90R 4.5 (234) 2,590,000원 8% 할인 2,460,500원 추가할인 2,390,000원
               <div>
                 <img alt=LG 그램 17Z90R>
               <div>
@@ -124,7 +124,7 @@
               <div> 베스트
               <div> 게이머 추천
               <div> 한정수량
-            <a ax-id=aid-2 href=/product/9> ASUS ROG Strix G15 G513 4.8 (567) 2,490,000원
+            <a ax-id=aid-16 href=/product/9> ASUS ROG Strix G15 G513 4.8 (567) 2,490,000원
               <div>
                 <img alt=ASUS ROG Strix G15 G513>
               <div>

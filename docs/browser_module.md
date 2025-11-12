@@ -1,3 +1,60 @@
+# UXAgent: LLM 기반 웹 자동화 에이전트 (v0.1)
+
+이 문서는 Playwright와 BeautifulSoup를 사용하여 웹 페이지를 '관찰'하고 '행동'하는 LLM 기반 에이전트의 핵심 로직과 E2E(End-to-End) 테스트 코드를 정리합니다.
+
+## 🎯 핵심 접근 방식: "하이브리드 Observe"
+
+본 에이전트는 LLM이 웹 페이지의 **'맥락(Context)'**과 **'실행(Action)'**을 동시에 파악할 수 있도록 설계된 "하이브리드 관찰(Hybrid Observe)" 방식을 사용합니다.
+
+1.  **계층적 텍스트 요약 (맥락/이해):**
+    * `observe()` 함수는 `script`, `style` 등 노이즈를 제거한 HTML을 재귀적으로 탐색합니다.
+    * `div`, `section` 같은 구조적 태그와 `h1`, `p`, `span` 등 콘텐츠 태그(상품명, 가격, 할인율)를 모두 수집하여, LLM이 페이지의 **'구조와 맥락'**을 이해할 수 있는 들여쓰기 텍스트 요약본을 생성합니다.
+
+2.  **Actionable ID 주입 (실행):**
+    * 페이지를 요약하기 *전*, `_pre_process_actionable` 함수가 `a[href]`, `button`, `input`, `label`, `[data-testid]` 등 **모든 '실행 가능' 요소**를 미리 찾아 고유한 `ax-id` (예: `aid-1`)를 맵핑합니다.
+    * 요약본 생성 시, 해당 태그에 `ax-id`를 함께 주입합니다.
+    * **결과:** LLM은 **" 'MSI 노트북'(맥락)의 가격은 '3,200,000원'(맥락)이고, 바로 아래 '구매하기' 버튼의 식별자는 `aid-22`(실행)` 이다"** 와 같이 맥락과 실행을 하나의 문서에서 연결지어 추론할 수 있습니다.
+
+---
+
+## 🧩 핵심 컴포넌트
+
+### 1. `observe(page, ...)`
+
+페이지를 '관찰'하고 LLM에게 전달할 요약본을 생성합니다.
+
+* **입력:** Playwright `Page` 객체
+* **처리:**
+    1.  `script`, `style` 등 불필요한 태그 제거 (`observe_clean.html` 생성).
+    2.  `_pre_process_actionable`을 호출하여 모든 실행 가능 요소에 `ax-id` 맵 생성.
+    3.  DOM을 재귀적으로 순회(`walk`).
+    4.  폼(Form) 입력을 위해 `input (type, id, placeholder)`, `label (for)` 속성을 수집하여 요약본에 포함.
+* **출력:** `ax-id`와 폼 속성이 포함된, 계층적 텍스트 요약본 (`observe_summary.txt`).
+
+### 2. `act(page, command)`
+
+LLM이 생성한 `command` (JSON)를 받아 실제 브라우저에서 '행동'을 수행합니다.
+
+* **입력:** Playwright `Page` 객체, LLM이 생성한 `command` 딕셔너리.
+* **처리:**
+    1.  `_find_locator` 헬퍼 함수가 `command`의 `params`를 해석합니다.
+    2.  LLM이 `observe` 요약본에서 본 정보를 기반으로 가장 안정적인 Playwright 셀렉터를 **우선순위**에 따라 선택합니다.
+        1.  `get_by_test_id()` (e.g., `data-testid=button-payment`)
+        2.  `get_by_label()` (e.g., `label=이름`)
+        3.  `get_by_placeholder()` (e.g., `placeholder=010-1234-5678`)
+        4.  `get_by_role()` (e.g., `role=button, name_text=확인`)
+        5.  `get_by_text()` (e.g., `text=로그인`)
+        6.  `locator()` (e.g., `selector=a[href='/product/2']`)
+    3.  선택된 `locator`에 대해 `.click()`, `.fill()` 등 Playwright 액션을 수행합니다.
+* **출력:** 브라우저 상태 변경 (페이지 이동, 폼 입력 등)
+
+---
+
+## 🚀 전체 E2E 테스트 코드 (`browser_module.py`)
+
+다음은 홈 페이지 진입부터 구매 완료까지 4단계 E2E 플로우를 시뮬레이션하는 전체 파이썬 스크립트입니다.
+
+```python
 from typing import Tuple, Dict, Any, List, Optional
 import re
 
@@ -61,8 +118,8 @@ def _pre_process_actionable(soup: BeautifulSoup) -> Dict[Tag, str]:
 # --- [수정] observe 함수가 actionable_map을 생성하고 walk에 전달 ---
 def observe(
     page: Page,
-    max_depth: int = 5,
-    max_chars: Optional[int] = 2500,
+    max_depth: int = 8,
+    max_chars: Optional[int] = 4000,
     save_prefix: str = "observe"
 ) -> str:
     # 1) 원본
@@ -173,15 +230,12 @@ def observe(
 
     return summary
 
-# --- [수정] act 함수가 ax-id를 지원하도록 수정 (예시) ---
-# LLM이 ax-id 기반으로 명령을 생성한다고 가정
+# --- [수정] 'act' 함수 및 '_build_selector' 헬퍼 ---
+# Playwright의 'getByRole', 'getByLabel' 등을 활용하도록 수정
 def act(page: Page, command: Dict[str, Any]) -> None:
-    # 'command' 자체가 이미 {"name": "...", "params": "..."} 입니다.
-    
-    # --- [수정] ---
-    name = command.get("name")
-    params = command.get("params", {}) or {}
-    # --- [수정] ---
+    action = command.get("action", {})
+    name = action.get("name")
+    params = action.get("params", {}) or {}
 
     if not name:
         raise ValueError("command.action.name 이 비어 있습니다.")
@@ -260,7 +314,7 @@ def act(page: Page, command: Dict[str, Any]) -> None:
 
 
 if __name__ == "__main__":
-    start_url = "https://note-pick.replit.app/"
+    start_url = "[https://note-pick.replit.app/](https://note-pick.replit.app/)"
     page, browser = setup_browser(start_url)
     
     current_page_summary = ""
