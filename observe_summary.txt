@@ -1,0 +1,58 @@
+  <div>
+    <div>
+      <ol>
+    <section>
+    <div>
+      <header>
+        <div>
+          <div>
+            <a href=/> NotePick
+            <nav>
+      <section>
+        <div>
+          <h2> 요즘 핫한 제품 🔥
+          <div>
+            <a href=/product/10> 1위: Acer Swift
+            <a href=/product/17> 2위: ASUS ZenBook
+            <a href=/product/1> 3위: LG 그램
+            <a href=/product/7> 4위: HP Pavilion
+            <a href=/product/18> 5위: Dell Inspiron
+      <section>
+        <img alt=25% Christmas Sale>
+      <section>
+        <div>
+          <h3> 추천 상품
+          <a href=/products> 전체보기
+            <button> 전체보기
+        <div>
+          <div>
+            <div>
+            <a href=/product/2> MSI GT76 Titan DT 9SG 4.8 (456) 3,200,000원
+          <div>
+            <div>
+            <a href=/product/3> Apple MacBook Air 13 M2 4.7 (892) 1,590,000원
+          <div>
+            <div> 13% 할인
+            <div>
+            <a href=/product/7> HP Pavilion Gaming 15-ec2 4.3 (289) 1,490,000원 13% 할인 1,415,500원 추가할인 1,290,000원
+      <div>
+        <div>
+          <div>
+            <div>
+            <div>
+          <div>
+            <div>
+      <section>
+        <div>
+          <div>
+            <div>
+            <a href=/product/5> Dell XPS 13 Plus 9320 4.6 (323) 1,890,000원
+          <div>
+            <div> 8% 할인
+            <div>
+            <a href=/product/1> LG 그램 17Z90R 4.5 (234) 2,590,000원 8% 할인 2,460,500원 추가할인 2,390,000원
+          <div>
+            <div>
+            <a href=/product/9> ASUS ROG Strix G15 G513 4.8 (567) 2,490,000원
+      <footer>
+        <div>

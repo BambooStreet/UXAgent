@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling>=1.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "uxagent"
+version = "0.1.0"
+description = "Playwright-based observe-think-act agent driven by LLM commands"
+readme = "README.md"
+authors = [{name = "UXAgent"}]
+requires-python = ">=3.10"
+dependencies = [
+    "playwright>=1.44",
+    "pydantic>=2.7",
+    "rich>=13.7"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2",
+    "pytest-asyncio>=0.23"
+]
+
+[project.scripts]
+uxagent = "uxagent.cli:main"
