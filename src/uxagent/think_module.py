@@ -4,8 +4,6 @@ from openai import OpenAI
 from typing import Dict, Any, List
 
 # --- 1. LLM 클라이언트 초기화 ---
-# 환경변수에서 API 키를 가져옵니다. 
-# (실제 실행 시 'export OPENAI_API_KEY=...'를 터미널에서 실행해야 함)
 try:
     client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 except Exception as e:
@@ -13,148 +11,147 @@ except Exception as e:
     print("--- ➡️ 터미널에서 'export OPENAI_API_KEY=your_api_key_here'를 실행하세요. ---")
     client = None
 
-# --- 2. LLM에게 내릴 시스템 프롬프트 (가장 중요!) ---
-SYSTEM_PROMPT = """
-당신은 'NotePick' 웹사이트에서 작업을 수행하는 AI 웹 자동화 에이전트입니다.
-당신의 임무는 사용자의 '최종 목표'를 달성하기 위해, 현재 '관찰(Observe)'된 페이지 요약본을 분석하고, '다음 행동(Action)'을 결정하는 것입니다.
+# --- 2. 시스템 프롬프트 (분리) ---
 
-[입력 1: 관찰 요약본]
-현재 페이지의 HTML 구조가 '계층적 텍스트'로 요약되어 제공됩니다.
-- `<태그 ax-id=aid-X ...>`: 'ax-id'가 붙은 요소는 '실행 가능(actionable)'합니다. (클릭, 입력 등)
-- `<input placeholder=...>`, `<label for=...>`: 폼 입력을 위한 정보입니다.
-- 가격, 상품명: '맥락' 정보입니다.
+# --- 프롬프트 1: 전략가 (Strategist) ---
+# 이 LLM은 '관찰 + 목표'를 보고, '자연어 생각'만 출력합니다.
+STRATEGIST_PROMPT = """
+당신은 'NotePick' 웹사이트에서 작업을 수행하는 AI 웹 자동화 에이전트의 '전략가'입니다.
+당신의 임무는 [관찰 요약본], [최종 목표], [이전 기록]을 바탕으로,
+목표 달성을 위해 **다음에 수행할 행동 계획을 '자연어'로 서술**하는 것입니다.
 
-[입력 2: 최종 목표]
-사용자가 달성하고자 하는 최종 목표입니다. (예: "MSI 노트북을 구매하세요.")
+[규칙]
+1.  '관찰 요약본'을 **처음부터 끝까지** 읽고, [최종 목표]와 관련된 핵심 요소를 찾습니다.
+2.  [이전 기록]을 참고하여, 이전에 실패(에러)했거나 무한 루프에 빠진 행동은 **반복하지 않습니다.**
+3.  '주문/결제' 페이지처럼 여러 단계가 있다면, **논리적인 순서대로 한 단계씩** 계획을 세웁니다. (예: '결제 수단' 선택을 건너뛰고 '결제하기'를 계획하지 마세요.)
+4.  **[중요] 폼(Form) 입력 계획:**
+    * 'fill' 행동을 계획할 때, **반드시 `observe` 요약본에 보이는 `label` 텍스트 또는 `placeholder` 텍스트를 명시**해야 합니다.
+    * '번역가'가 `label`과 `placeholder`를 헷갈리지 않도록 명확하게 지시해야 합니다.
+    * (좋은 예시) "이제 '<label for=name> 이름'을 찾았습니다. 이 '이름' <label>을 가진 필드에 '홍길동'을 입력합니다."
+    * (좋은 예시) "이름 입력이 완료되었습니다. 이제 '<label for=phone> 연락처'를 찾았습니다. 이 '연락처' <label>을 가진 필드에 '010-1234-5678'을 입력합니다."
+    * (나쁜 예시) "이제 연락처를 입력합니다." (<- 모호함)
+5.  당신의 출력은 **오직 '한글 자연어'**여야 합니다. JSON이나 코드를 출력하지 마세요.
 
-[입력 3: 이전 행동 기록]
-이전에 수행한 행동과 관찰의 요약입니다. (참고용)
+[출력 예시]
+- (홈페이지) "현재 홈 페이지입니다. 목표인 'MSI GT76' 상품이 '추천 상품' 섹션에 보입니다. 이 상품의 텍스트인 'MSI GT76 Titan DT 9SG'를 클릭해서 상품 상세 페이지로 이동해야 합니다."
+- (결제페이지-연락처) "이름 입력이 완료되었습니다. 이제 '<label for=phone> 연락처'를 찾았습니다. 이 '연락처' <label>을 가진 필드에 '010-1234-5678'을 입력합니다."
+- (무한루프 시) "이전에 '결제하기' 버튼을 눌렀는데도 페이지가 넘어가지 않았습니다. '결제 수단'을 선택하지 않은 것 같습니다. 이번에는 '무통장입금' <label>을 클릭합니다."
+"""
 
-[당신의 작업]
-'관찰 요약본'을 '최종 목표'와 비교하여, **다음에 수행할 가장 적절한 '행동' 하나**를 결정합니다.
-당신의 결정은 **반드시 2개의 키를 가진 JSON 형식으로만** 출력해야 합니다: "thought"와 "action".
+# --- 프롬프트 2: 번역가 (Translator) ---
+# 이 LLM은 '전략가의 생각'을 받고, 'act() JSON'만 출력합니다.
+TRANSLATOR_PROMPT = """
+당신은 AI 에이전트의 '행동 번역가'입니다.
+당신의 임무는 [전략가의 생각]을 `act()` 함수가 실행할 수 있는 **단 하나의 'action' JSON 객체**로 '번역'하는 것입니다.
 
-1. "thought" (str):
-   - 현재 상황을 어떻게 분석했는지,
-   - 왜 이 'action'을 선택했는지에 대한 '근거'와 '이유'를 한글로 상세히 서술합니다.
-   - (예: "홈 페이지에서 '추천 상품' 섹션을 찾았고, 목표인 'MSI 노트북'의 링크(href='/product/2')를 발견했습니다. 이 링크를 클릭하여 상품 상세 페이지로 이동합니다.")
+[규칙]
+1.  [전략가의 생각]을 정확히 이해하여, `act()`가 알아들을 수 있는 'params' 키로 번역해야 합니다.
+2.  **[중요] 'fill' 번역 규칙:**
+    * 전략가가 "'이름' <label>을 가진 필드..."라고 말하면: `{"name": "fill", "params": {"label": "이름", ...}}`
+    * 전략가가 "'010-...' <placeholder>를 가진 필드..."라고 말하면: `{"name": "fill", "params": {"placeholder": "010-...", ...}}`
+    * **절대 `label` 텍스트(예: "연락처")를 `placeholder` 키에 넣지 마세요.**
+3.  **절대** 'params' 안에 `ax-id`, `href`, `class` 등 '힌트' 속성을 **키(key)로 사용하지 마세요.**
+4.  `_find_locator`가 이해하는 **7개의 유효한 키**(`data-testid`, `label`, `placeholder`, `role`, `name_text`, `text`, `selector`)만 사용하세요.
 
-2. "action" (dict):
-   - `browser_module.act` 함수가 실행할 정확한 '명령'입니다.
-   - 'name'과 'params' 키를 가져야 합니다.
-   - 'params'는 `_find_locator`가 이해할 수 있는 형식이어야 합니다.
+[유효한 'params' 키]
+1.  `data-testid`: (예: "button-payment")
+2.  `label`: (예: "이름", "무통장입금", "연락처")
+3.  `placeholder`: (예: "010-1234-5678")
+4.  `role` + `name_text`: (예: `{"role": "link", "name_text": "MSI GT76..."}`)
+5.  `text`: (예: `{"text": "MSI GT76 Titan DT 9SG"}`)
+6.  `selector`: (최후의 수단)
 
+[작업 완료]
+- [전략가의 생각]이 '목표 달성' 또는 '구매 완료'를 의미한다면, `finish` 액션을 생성하세요.
 
-[사용 가능한 'action' 종류]
-
-**[중요] 셀렉터 우선순위:**
-LLM은 `_find_locator` 함수가 가장 선호하는 안정적인 셀렉터를 사용해야 합니다.
-1. (최우선) `{"data-testid": "..."}`: `data-testid`가 있다면 항상 그것을 사용하세요.
-2. (폼 입력) `{"label": "..."}`: `<label>` 텍스트가 명확한 폼 필드에 사용하세요.
-3. (폼 입력) `{"placeholder": "..."}`: `placeholder`가 명확한 폼 필드에 사용하세요.
-4. (링크/버튼) `{"role": "link", "name_text": "..."}` 또는 `{"role": "button", "name_text": "..."}`: `ax-id`가 부여된 요소의 '텍스트'를 'name_text'로 사용하세요.
-5. (텍스트) `{"text": "..."}`: 'MSI GT76 Titan DT 9SG' 처럼 고유한 텍스트를 기준으로 찾습니다.
-6. (최후의 수단) `{"selector": "..."}`: 위 5가지로 도저히 안될 때만 CSS 셀렉터를 사용하세요.
-
-**[에러 처리]**
-- `strict mode violation` (중복 요소) 에러가 발생하면, **절대 동일한 'action'을 반복하지 마세요.**
-- `selector`가 모호했다면, `role`과 `name_text`를 조합하거나 `text`를 사용하는 등 **더 구체적인 'params'로 변경**하여 재시도하세요.
-
-1. 클릭 (Click):
-   (좋은 예) {"name": "click", "params": {"data-testid": "button-purchase"}}
-   (좋은 예) {"name": "click", "params": {"role": "link", "name_text": "MSI GT76 Titan DT 9SG"}}
-   (좋은 예) {"name": "click", "params": {"text": "MSI GT76 Titan DT 9SG"}}
-   (나쁜 예 - 모호함) {"name": "click", "params": {"selector": "a[href='/product/2']"}}
-
-2. 폼 입력 (Fill):
-   (좋은 예) {"name": "fill", "params": {"label": "이름", "value": "홍길동"}}
-   (좋은 예) {"name": "fill", "params": {"placeholder": "010-...", "value": "010-1234-5678"}}
-
-3. 페이지 로드 대기 (Wait for Load):
-   {"name": "wait_for_load", "params": {}}
-
-4. 작업 완료 (Finish):
-   - **모든 목표가 완수되었다고 판단될 때** (예: '구매 완료' 페이지의 '감사합니다' 메시지 확인) 이 명령을 보내야 합니다.
-   {"name": "finish", "params": {"reason": "구매 완료 페이지 확인"}}
-
-[출력 규칙]
-- 다른 말은 절대 하지 말고, 오직 'JSON' 객체만 출력합니다.
-- 예:
-  {
-    "thought": "홈 페이지에서 'MSI GT76 Titan DT 9SG' 상품이 2개(핫딜, 추천) 있지만, '추천 상품' 섹션의 상품을 클릭해야 합니다. 'role'과 'name_text'를 사용하여 정확한 링크를 클릭합니다.",
-    "action": {
-      "name": "click",
-      "params": {
-        "role": "link",
-        "name_text": "MSI GT76 Titan DT 9SG"
-      }
-    }
-  }
+[출력]
+- **다른 말은 절대 하지 말고, 오직 'JSON' 객체만 출력합니다.**
+- (예: `{"name": "click", "params": {"label": "무통장장입금"}}`)
+- (예: `{"name": "fill", "params": {"label": "연락처", "value": "010-1234-5678"}}`)
 """
 
 def think(observation: str, goal: str, history: List[Dict[str, str]]) -> Dict[str, Any]:
     """
     관찰(observation)과 목표(goal)를 기반으로 다음 행동(action)을 결정합니다.
+    (내부적으로 2-Call LLM을 사용)
     """
     if client is None:
         raise ValueError("OpenAI 클라이언트가 초기화되지 않았습니다. API 키를 확인하세요.")
 
-    # LLM에게 전달할 메시지 구성
-    messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
+    # --- 🤖 [CALL 1: 전략가] 자연어 '생각' 생성 ---
+    strategist_messages = [
+        {"role": "system", "content": STRATEGIST_PROMPT},
     ]
-    
-    # 이전 기록(history)이 있다면 메시지에 추가
     if history:
-        messages.append({"role": "user", "content": f"이전 행동 기록:\n{json.dumps(history, indent=2, ensure_ascii=False)}"})
-
-    # 현재 관찰과 목표 전달
-    prompt = f"""
+        strategist_messages.append({"role": "user", "content": f"이전 행동 기록 (참고용):\n{json.dumps(history, indent=2, ensure_ascii=False)}"})
+    
+    strategist_prompt = f"""
     [최종 목표]
     {goal}
 
     [현재 관찰 (observe_summary.txt)]
     {observation}
 
-    [당신의 결정 (JSON 출력)]
+    [당신의 전략 (자연어 출력)]
     """
-    messages.append({"role": "user", "content": prompt})
+    strategist_messages.append({"role": "user", "content": strategist_prompt})
 
     try:
-        # --- 🤖 LLM API 호출 ---
-        response = client.chat.completions.create(
-            model="gpt-4o", # 또는 gpt-4-turbo
-            messages=messages,
-            response_format={"type": "json_object"}, # JSON 출력 모드
-            temperature=0.1, # 일관된 출력을 위해
+        response_thought = client.chat.completions.create(
+            model="gpt-4o", # 전략가는 고성능 모델 사용
+            messages=strategist_messages,
+            temperature=0.1,
         )
+        thought_content = response_thought.choices[0].message.content
+        if not thought_content:
+            raise ValueError("전략가 LLM이 빈 'thought'를 반환했습니다.")
         
-        response_content = response.choices[0].message.content
-        
-        # LLM이 생성한 JSON 문자열을 파싱
-        if response_content:
-            parsed_json = json.loads(response_content)
-            
-            # 'thought'와 'action' 키가 있는지 확인
-            if "thought" in parsed_json and "action" in parsed_json:
-                return parsed_json
-            else:
-                raise ValueError(f"LLM 응답에 'thought' 또는 'action' 키가 없습니다: {response_content}")
-        else:
-            raise ValueError("LLM 응답이 비어있습니다.")
+        print(f"💡 LLM Thought: {thought_content}") # main.py 대신 여기서 'thought'를 바로 출력
 
     except Exception as e:
-        print(f"--- ❌ Think 모듈 에러 ---")
-        print(f"LLM 응답 파싱 중 에러 발생: {e}")
-        # 에러 발생 시 플로우를 중지하는 'finish' 액션 반환
-        return {
-            "thought": f"LLM 호출 또는 응답 파싱 중 심각한 에러 발생: {e}. 작업을 중지합니다.",
-            "action": {"name": "finish", "params": {"reason": f"Error: {e}"}}
-        }
+        print(f"--- ❌ Think 모듈 (Call 1: 전략가) 에러 ---")
+        print(f"에러: {e}")
+        return {"thought": f"전략가 LLM 에러: {e}", "action": {"name": "finish", "params": {"reason": f"Error: {e}"}}}
+
+    # --- 🤖 [CALL 2: 번역가] 'action' JSON 생성 ---
+    translator_messages = [
+        {"role": "system", "content": TRANSLATOR_PROMPT},
+        {"role": "user", "content": f"[전략가의 생각]\n{thought_content}\n\n[번역된 'action' JSON 출력]"}
+    ]
+
+    try:
+        response_action = client.chat.completions.create(
+            model="gpt-4o", # 번역가도 정확해야 하므로 gpt-4o (또는 gpt-4o-mini 테스트 가능)
+            messages=translator_messages,
+            response_format={"type": "json_object"}, # JSON 출력 모드
+            temperature=0.0,
+        )
+        
+        action_content = response_action.choices[0].message.content
+        if not action_content:
+            raise ValueError("번역가 LLM이 빈 'action'을 반환했습니다.")
+
+        parsed_action = json.loads(action_content)
+        
+        # 'name'과 'params' 키가 있는지 확인
+        if "name" in parsed_action and "params" in parsed_action:
+            # 최종 결과물 조합
+            return {
+                "thought": thought_content,
+                "action": parsed_action
+            }
+        else:
+            raise ValueError(f"'action' JSON에 'name' 또는 'params' 키가 없습니다: {action_content}")
+
+    except Exception as e:
+        print(f"--- ❌ Think 모듈 (Call 2: 번역가) 에러 ---")
+        print(f"에러: {e}")
+        return {"thought": thought_content, "action": {"name": "finish", "params": {"reason": f"Error: {e}"}}}
+
 
 if __name__ == "__main__":
     # think_module.py 자체를 테스트하기 위한 코드
-    print("--- 🧠 think_module.py 테스트 ---")
+    print("--- 🧠 think_module.py (2-Call) 테스트 ---")
     
     # 가짜 관찰 (홈 페이지 축약)
     fake_obs = """
@@ -167,15 +164,12 @@ if __name__ == "__main__":
         <a ax-id=aid-10 href=/product/2>
           <h3>MSI GT76 Titan DT 9SG</h3>
           <p> 3,200,000원
-        <a ax-id=aid-11 href=/product/3>
-          <h3>Apple MacBook Air 13 M2</h3>
-          <p> 1,590,000원
     """
     fake_goal = "MSI GT76 Titan DT 9SG 노트북을 구매하세요."
     
     decision = think(fake_obs, fake_goal, history=[])
     
-    print("--- LLM의 결정 ---")
+    print("--- LLM의 최종 결정 ---")
     print(json.dumps(decision, indent=2, ensure_ascii=False))
 
     # (실행 전 `export OPENAI_API_KEY=...`를 터미널에 입력해야 합니다)

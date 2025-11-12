@@ -6,131 +6,150 @@
       <header>
         <div>
           <div>
-            <a ax-id=aid-5 href=/> NotePick
+            <a ax-id=aid-10 href=/>
               <h1> NotePick
             <nav>
-              <a ax-id=aid-13 href=/> 홈
-              <a ax-id=aid-4 href=/products> 전체
-      <section>
-        <div>
-          <h2> 요즘 핫한 제품 🔥
-          <p> 지금 가장 많이 팔리는 인기 상품을 확인하세요
-          <div>
-            <a ax-id=aid-22 href=/product/15> 1위: HP EliteBook
-            <a ax-id=aid-1 href=/product/2> 2위: MSI GT76
-            <a ax-id=aid-17 href=/product/20> 3위: Lenovo IdeaPad
-            <a ax-id=aid-11 href=/product/4> 4위: ASUS VivoBook
-            <a ax-id=aid-2 href=/product/5> 5위: Dell XPS
-      <section>
-        <img alt=25% Christmas Sale>
-      <section>
-        <div>
-          <h3> 추천 상품
-          <a ax-id=aid-19 href=/products> 전체보기
-            <button ax-id=aid-3> 전체보기
-        <div>
-          <div>
-            <div>
-              <div> 지금 인기
-              <div> 오늘만 특가
-            <a ax-id=aid-14 href=/product/2> MSI GT76 Titan DT 9SG 4.8 (456) 3,200,000원
-              <div>
-                <img alt=MSI GT76 Titan DT 9SG>
-              <div>
-                <h3> MSI GT76 Titan DT 9SG
-                <div>
-                <div>
-          <div>
-            <div>
-              <div> 추천
-              <div> 신상품
-              <div> 무료배송
-            <a ax-id=aid-20 href=/product/3> Apple MacBook Air 13 M2 4.7 (892) 1,590,000원
-              <div>
-                <img alt=Apple MacBook Air 13 M2>
-              <div>
-                <h3> Apple MacBook Air 13 M2
-                <div>
-                <div>
-          <div>
-            <div> 13% 할인
-            <div>
-              <div> 13% 할인
-              <div> 무이자 할부
-              <div> 인기
-            <a ax-id=aid-12 href=/product/7> HP Pavilion Gaming 15-ec2 4.3 (289) 1,490,000원 13% 할인 1,415,500원 추가할인 1,290,000원
-              <div>
-                <img alt=HP Pavilion Gaming 15-ec2>
-              <div>
-                <h3> HP Pavilion Gaming 15-ec2
-                <div>
-                <div>
+              <a ax-id=aid-8 href=/> 홈
+              <a ax-id=aid-3 href=/products> 전체
       <div>
         <div>
           <div>
             <div>
-              <h3> 🖱️ 마우스 특가전!
-              <p> 노트북과 함께 구매하면 10% 추가 할인
-            <div>
-              <button ax-id=aid-21 data-testid=button-carousel-prev>
-              <button ax-id=aid-18 data-testid=button-carousel-next>
+              <img alt=MSI GT76 Titan DT 9SG>
           <div>
             <div>
-              <div ax-id=aid-24 data-testid=card-mouse-m1>
+              <h1> MSI GT76 Titan DT 9SG
+              <div>
+                <div>
+                <span> (456 리뷰)
+            <div>
+              <p> 3,200,000원
+            <div>
+              <h3> 주요 스펙
+              <div>
                 <div>
                 <div>
-              <div ax-id=aid-16 data-testid=card-mouse-m2>
                 <div>
                 <div>
-              <div ax-id=aid-7 data-testid=card-mouse-m3>
+        <div>
+          <h3> 같이 구매하면 좋은 제품
+          <div>
+            <div>
+              <div>
                 <div>
                 <div>
-              <div ax-id=aid-10 data-testid=card-mouse-m4>
+              <div>
                 <div>
-                <div>
-              <div ax-id=aid-8 data-testid=card-mouse-m5>
-                <div>
-                <div>
-              <div ax-id=aid-23 data-testid=card-mouse-m6>
-                <div>
-                <div>
-      <section>
+        <div>
+          <button ax-id=aid-5> 더 알아보기
         <div>
           <div>
-            <div>
-              <div> 카드 즉시 할인
-              <div> 베스트셀러
-            <a ax-id=aid-6 href=/product/5> Dell XPS 13 Plus 9320 4.6 (323) 1,890,000원
-              <div>
-                <img alt=Dell XPS 13 Plus 9320>
-              <div>
-                <h3> Dell XPS 13 Plus 9320
-                <div>
-                <div>
-          <div>
-            <div> 8% 할인
-            <div>
-              <div> 내일배송
-              <div> 베스트
-            <a ax-id=aid-15 href=/product/1> LG 그램 17Z90R 4.5 (234) 2,590,000원 8% 할인 2,460,500원 추가할인 2,390,000원
-              <div>
-                <img alt=LG 그램 17Z90R>
-              <div>
-                <h3> LG 그램 17Z90R
-                <div>
-                <div>
+            <h3> 고객 리뷰 (456)
+            <button ax-id=aid-11 data-testid=button-view-all-reviews> 전체보기
           <div>
             <div>
-              <div> 베스트
-              <div> 게이머 추천
-              <div> 한정수량
-            <a ax-id=aid-9 href=/product/9> ASUS ROG Strix G15 G513 4.8 (567) 2,490,000원
               <div>
-                <img alt=ASUS ROG Strix G15 G513>
+                <div>
+                <span> 2024-4-24
+              <p> 정말 만족스러운 구매였습니다. 배송도 빠르고 제품 상태도 완벽했어요. 성능이 기대 이상이라 작업할 때 정말 편합니다.
+            <div>
               <div>
-                <h3> ASUS ROG Strix G15 G513
                 <div>
+                <span> 2024-5-26
+              <p> 가성비가 정말 좋네요! 이 가격에 이런 스펙을 가진 노트북을 찾기 힘들 것 같아요. 디자인도 세련되고 가볍습니다.
+            <div>
+              <div>
                 <div>
+                <span> 2024-7-22
+              <p> 배터리 지속시간이 생각보다 길어서 좋아요. 하루 종일 사용해도 충전 걱정이 없습니다. 화면도 선명하고 밝기도 충분해요.
+            <div>
+              <div>
+                <div>
+                <span> 2024-12-20
+              <p> 처음엔 고민했는데 구매하길 잘했어요. 발열도 적고 소음도 거의 없습니다. 영상 편집 작업에도 무리 없이 돌아가네요.
+            <div>
+              <div>
+                <div>
+                <span> 2024-1-21
+              <p> 디스플레이 품질이 정말 훌륭합니다. 색감도 정확하고 시야각도 넓어서 작업하기 편해요. 키보드 타건감도 좋습니다.
+            <div>
+              <div>
+                <div>
+                <span> 2024-8-15
+              <p> 무게가 가벼워서 들고 다니기 편해요. 외근이 잦은 저에게 딱 맞는 제품입니다. 성능도 충분하고 만족스러워요.
+            <div>
+              <div>
+                <div>
+                <span> 2024-6-2
+              <p> 게임도 잘 돌아가고 발열 관리도 잘 되네요. 쿨링팬 소리가 조금 있긴 하지만 성능을 생각하면 감수할 만합니다.
+            <div>
+              <div>
+                <div>
+                <span> 2024-4-22
+              <p> 학생인데 과제하기 딱 좋아요. 여러 프로그램 동시에 켜도 버벅임 없이 잘 돌아갑니다. 가격도 합리적이에요.
+            <div>
+              <div>
+                <div>
+                <span> 2024-3-12
+              <p> 예쁜 디자인에 성능도 좋아서 정말 마음에 듭니다. 주변 사람들도 다 예쁘다고 하네요. 휴대성도 좋고 최고예요!
+            <div>
+              <div>
+                <div>
+                <span> 2024-1-7
+              <p> SSD 속도가 빨라서 부팅도 금방 되고 프로그램 실행도 빠릅니다. 업무 효율이 확실히 올라갔어요.
+            <div>
+              <div>
+                <div>
+                <span> 2024-4-6
+              <p> 화면이 크고 선명해서 영상 시청하기 좋아요. 스피커 음질도 괜찮은 편입니다. 넷플릭스 보기 딱 좋네요.
+            <div>
+              <div>
+                <div>
+                <span> 2024-2-22
+              <p> 키보드 백라이트가 있어서 어두운 곳에서도 작업하기 편해요. 터치패드 반응도 민감하고 좋습니다.
+            <div>
+              <div>
+                <div>
+                <span> 2024-3-5
+              <p> 가격 대비 정말 좋은 제품이에요. 친구한테도 추천했습니다. 디자인도 심플하고 세련되어서 마음에 들어요.
+            <div>
+              <div>
+                <div>
+                <span> 2024-11-13
+              <p> 포트가 다양해서 편리해요. USB-C 충전도 되고 HDMI 포트도 있어서 모니터 연결하기 좋습니다.
+            <div>
+              <div>
+                <div>
+                <span> 2024-7-3
+              <p> 처음 노트북 구매하는데 너무 만족스러워요. 사용법도 쉽고 성능도 좋아서 추천합니다!
+            <div>
+              <div>
+                <div>
+                <span> 2024-1-13
+              <p> 배송 빠르고 포장도 꼼꼼했어요. 제품 상태 완벽하고 액정 보호필름도 붙어있어서 좋았습니다.
+            <div>
+              <div>
+                <div>
+                <span> 2024-6-6
+              <p> 업그레이드한 보람이 있네요. 이전 노트북보다 훨씬 빠르고 쾌적합니다. 멀티태스킹도 문제없어요.
+            <div>
+              <div>
+                <div>
+                <span> 2024-11-28
+              <p> 재택근무용으로 샀는데 화상회의할 때 웹캠 화질도 좋고 마이크도 잘 잡혀요. 추천합니다!
+            <div>
+              <div>
+                <div>
+                <span> 2024-12-16
+              <p> 얇고 가벼워서 가방에 넣고 다니기 편해요. 카페에서 작업할 때 정말 좋습니다. 배터리도 오래가요.
+            <div>
+              <div>
+                <div>
+                <span> 2024-7-15
+              <p> 코딩 작업용으로 구매했는데 IDE 돌리기 딱 좋아요. RAM도 충분하고 컴파일 속도도 빠릅니다.
+          <div>
+            <button ax-id=aid-15 data-testid=button-purchase> 구매하기
+            <button ax-id=aid-4 data-testid=button-compare> 비교하기
       <footer>
         <div>
           <p> © 2024 NotePick. All rights reserved.

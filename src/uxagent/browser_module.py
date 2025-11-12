@@ -100,17 +100,23 @@ def observe(
     def node_to_text(node: Tag) -> str:
         name = node.name
 
-        # --- [수정] 콘텐츠 태그 확장 ---
-        if name in ("a", "button", "h1", "h2", "h3", "h4", "p", "span", "label"):
-            text = " ".join(node.stripped_strings)
-        else:
-            # 컨테이너는 바로 아래 텍스트만
-            direct_texts = [
-                t.strip()
-                for t in node.find_all(string=True, recursive=False)
-                if t.strip()
-            ]
-            text = " ".join(direct_texts)
+        # --- [수정] ---
+        # "a", "button" 등도 자식 태그(h3, p)가 있으므로,
+        # 기본적으로는 '직접 가진 텍스트'만 가져오도록 변경합니다.
+        # (stripped_strings는 h3, p의 텍스트까지 모두 끌어와서 
+        # LLM이 존재하지 않는 '합성 텍스트'를 클릭하려는 오류를 유발함)
+
+        # [새로운 규칙]
+        # 모든 태그는 '직접 텍스트'만 가져온다.
+        # walk() 함수가 재귀적으로 자식 노드(h3, p, span)를 탐색하며
+        # 그들의 텍스트를 별도의 라인으로 출력할 것이다.
+        direct_texts = [
+            t.strip()
+            for t in node.find_all(string=True, recursive=False)
+            if t.strip()
+        ]
+        text = " ".join(direct_texts)
+        # --- [수정 완료] ---
 
         text = re.sub(r"\s+", " ", text)
         return text[:120]
