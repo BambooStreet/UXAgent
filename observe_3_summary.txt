@@ -1,47 +1,43 @@
-  <div>
-    <div>
       <ol>
     <section>
-    <div>
       <header>
-        <div>
-          <div>
-            <a ax-id=aid-11 href=/>
+            <a ax-id=aid-3 href=/> NotePick
               <h1> NotePick
             <nav>
-              <a ax-id=aid-10 href=/> 홈
-              <a ax-id=aid-4 href=/products> 전체
-      <div>
-        <div>
-          <div>
-            <div>
+              <a ax-id=aid-2 href=/> 홈
+              <a ax-id=aid-11 href=/products> 전체
               <div> 1
               <span> 주문/결제
-            <div>
-            <div>
               <div> 2
               <span> 주문완료
-      <div>
-        <div>
           <h1> 주문/결제
-          <div>
-            <div>
-              <div>
                 <h2> 주문 상품
-                <div>
-              <div>
+                    <img alt=ASUS ROG Strix G15 G513>
+                    <h3> ASUS ROG Strix G15 G513
+                    <p> 2,490,000원
                 <h2> 배송 정보
-                <div>
-              <div>
+                    <label ax-id=aid-6 for=name> 이름
+                    <input ax-id=aid-5 id=name placeholder=홍길동>
+                    <label ax-id=aid-14 for=phone> 연락처
+                    <input ax-id=aid-10 id=phone placeholder=010-1234-5678>
+                    <label ax-id=aid-15 for=address> 배송 주소
+                    <input ax-id=aid-12 id=address placeholder=서울시 강남구...>
                 <h2> 결제 수단
-                <div>
-            <div>
-              <div>
+                      <button ax-id=aid-8>
+                      <label ax-id=aid-1 for=card> 카드 간편결제
+                        <span> 카드 간편결제
+                      <button ax-id=aid-4>
+                      <label ax-id=aid-7 for=bank> 무통장입금
+                        <span> 무통장입금
                 <h2> 결제 정보
-                <div>
-                <button ax-id=aid-14 data-testid=button-apply-coupon> 5% 신규가입 쿠폰 적용하기
-                <button ax-id=aid-2 data-testid=button-payment> 결제하기
+                    <span> 상품 금액
+                    <span> 2,490,000원
+                    <span> 배송비
+                    <span> 무료
+                    <span> 총 결제 금액
+                    <span> 2,490,000원
+                <button ax-id=aid-13 data-testid=button-apply-coupon> 5% 신규가입 쿠폰 적용하기
+                <button ax-id=aid-9 data-testid=button-payment> 결제하기
                 <p> 주문 시 개인정보 수집·이용 및 결제대행 서비스 이용약관에 동의하게 됩니다.
       <footer>
-        <div>
           <p> © 2024 NotePick. All rights reserved.

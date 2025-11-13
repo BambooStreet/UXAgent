@@ -1,47 +1,115 @@
-  <div>
-    <div>
+[!] CURRENT ALERTS:
+  <alert> 13% OFF
+  <alert> 25% OFF
+  <alert> 24% OFF
+---
       <ol>
     <section>
-    <div>
       <header>
-        <div>
-          <div>
-            <a ax-id=aid-8 href=/> NotePick
+            <a ax-id=aid-19 href=/> NotePick
               <h1> NotePick
             <nav>
-              <a ax-id=aid-4 href=/> 홈
-              <a ax-id=aid-13 href=/products> 전체
-      <div>
-        <div>
-          <div>
-            <div>
-              <div> 1
-              <span> 주문/결제
-            <div>
-            <div>
-              <div> 2
-              <span> 주문완료
-      <div>
-        <div>
-          <h1> 주문/결제
-          <div>
-            <div>
-              <div>
-                <h2> 주문 상품
-                <div>
-              <div>
-                <h2> 배송 정보
-                <div>
-              <div>
-                <h2> 결제 수단
-                <div>
-            <div>
-              <div>
-                <h2> 결제 정보
-                <div>
-                <button ax-id=aid-6 data-testid=button-apply-coupon> 5% 신규가입 쿠폰 적용하기
-                <button ax-id=aid-7 data-testid=button-payment> 결제하기
-                <p> 주문 시 개인정보 수집·이용 및 결제대행 서비스 이용약관에 동의하게 됩니다.
+              <a ax-id=aid-16 href=/> 홈
+              <a ax-id=aid-7 href=/products> 전체
+      <section>
+          <h2> 요즘 핫한 제품 🔥
+          <p> 지금 가장 많이 팔리는 인기 상품을 확인하세요
+            <a ax-id=aid-18 href=/product/12> 1위: MSI Prestige
+            <a ax-id=aid-17 href=/product/8> 2위: Samsung Galaxy
+            <a ax-id=aid-13 href=/product/13> 3위: 한성컴퓨터 TFG5454T
+            <a ax-id=aid-9 href=/product/15> 4위: HP EliteBook
+            <a ax-id=aid-6 href=/product/17> 5위: ASUS ZenBook
+      <section>
+        <img alt=25% Christmas Sale>
+      <section>
+          <h3> 추천 상품
+          <a ax-id=aid-21 href=/products> 전체보기
+            <button ax-id=aid-4> 전체보기
+              <div> 지금 인기
+              <div> 오늘만 특가
+            <a ax-id=aid-20 href=/product/2> MSI GT76 Titan DT 9SG 4.8 (456) 3,200,000원
+                <img alt=MSI GT76 Titan DT 9SG>
+                <h3> MSI GT76 Titan DT 9SG
+                  <span> 4.8
+                  <span> (456)
+                  <p> 3,200,000원
+              <div> 추천
+              <div> 신상품
+              <div> 무료배송
+            <a ax-id=aid-8 href=/product/3> Apple MacBook Air 13 M2 4.7 (892) 1,590,000원
+                <img alt=Apple MacBook Air 13 M2>
+                <h3> Apple MacBook Air 13 M2
+                  <span> 4.7
+                  <span> (892)
+                  <p> 1,590,000원
+            <div> 13% 할인
+              <div> 13% 할인
+              <div> 무이자 할부
+              <div> 인기
+            <a ax-id=aid-24 href=/product/7> HP Pavilion Gaming 15-ec2 4.3 (289) 1,490,000원 13% 할인 1,415,500원 추가할인 1,290,000원
+                <img alt=HP Pavilion Gaming 15-ec2>
+                <h3> HP Pavilion Gaming 15-ec2
+                  <span> 4.3
+                  <span> (289)
+                  <p> 1,490,000원
+                  <p> 13% 할인 1,415,500원
+                  <p> 추가할인 1,290,000원
+              <h3> 🖱️ 마우스 특가전!
+              <p> 노트북과 함께 구매하면 10% 추가 할인
+              <button ax-id=aid-22 data-testid=button-carousel-prev>
+              <button ax-id=aid-23 data-testid=button-carousel-next>
+                  <div> 13% OFF
+                    <img alt=로지텍 MX Master 3S>
+                  <h4> 로지텍 MX Master 3S
+                    <p> 159,000원
+                    <p> 139,000원
+                    <img alt=애플 매직 마우스 2>
+                  <h4> 애플 매직 마우스 2
+                    <p> 99,000원
+                  <div> 25% OFF
+                    <img alt=레이저 바실리스크 V3>
+                  <h4> 레이저 바실리스크 V3
+                    <p> 119,000원
+                    <p> 89,000원
+                    <img alt=로지텍 G502 HERO>
+                  <h4> 로지텍 G502 HERO
+                    <p> 79,000원
+                  <div> 24% OFF
+                    <img alt=스틸시리즈 Rival 3>
+                  <h4> 스틸시리즈 Rival 3
+                    <p> 59,000원
+                    <p> 45,000원
+                    <img alt=코르세어 다크코어 RGB>
+                  <h4> 코르세어 다크코어 RGB
+                    <p> 129,000원
+      <section>
+              <div> 카드 즉시 할인
+              <div> 베스트셀러
+            <a ax-id=aid-3 href=/product/5> Dell XPS 13 Plus 9320 4.6 (323) 1,890,000원
+                <img alt=Dell XPS 13 Plus 9320>
+                <h3> Dell XPS 13 Plus 9320
+                  <span> 4.6
+                  <span> (323)
+                  <p> 1,890,000원
+            <div> 8% 할인
+              <div> 내일배송
+              <div> 베스트
+            <a ax-id=aid-15 href=/product/1> LG 그램 17Z90R 4.5 (234) 2,590,000원 8% 할인 2,460,500원 추가할인 2,390,000원
+                <img alt=LG 그램 17Z90R>
+                <h3> LG 그램 17Z90R
+                  <span> 4.5
+                  <span> (234)
+                  <p> 2,590,000원
+                  <p> 8% 할인 2,460,500원
+                  <p> 추가할인 2,390,000원
+              <div> 베스트
+              <div> 게이머 추천
+              <div> 한정수량
+            <a ax-id=aid-11 href=/product/9> ASUS ROG Strix G15 G513 4.8 (567) 2,490,000원
+                <img alt=ASUS ROG Strix G15 G513>
+                <h3> ASUS ROG Strix G15 G513
+                  <span> 4.8
+                  <span> (567)
+                  <p> 2,490,000원
       <footer>
-        <div>
           <p> © 2024 NotePick. All rights reserved.
