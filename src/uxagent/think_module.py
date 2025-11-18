@@ -13,7 +13,7 @@ except Exception as e:
 
 # --- 2. 시스템 프롬프트 (분리) ---
 
-# --- 프롬프트 1: 전략가 (Strategist) ---
+
 # 이 LLM은 '관찰 + 목표'를 보고, '자연어 생각'만 출력합니다.
 STRATEGIST_PROMPT = """
 당신은 'NotePick' 웹사이트에서 작업을 수행하는 AI 웹 자동화 에이전트의 '전략가'입니다.
@@ -44,7 +44,6 @@ STRATEGIST_PROMPT = """
 * 오직 '한글 자연어'로 당신의 계획을 서술하세요.
 """
 
-# --- 프롬프트 2: 번역가 (Translator) ---
 # 이 LLM은 '전략가의 생각'을 받고, 'act() JSON'만 출력합니다.
 TRANSLATOR_PROMPT = """
 당신은 AI 에이전트의 '행동 번역가'입니다.

@@ -38,85 +38,152 @@
       <div class="flex items-center justify-center gap-4">
        <div class="flex items-center gap-2">
         <div class="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-medium">
+         1
         </div>
         <span class="text-sm font-medium">
          주문/결제
         </span>
        </div>
-       <div class="w-12 h-0.5 bg-primary">
+       <div class="w-12 h-0.5 bg-border">
        </div>
        <div class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-medium">
+        <div class="w-8 h-8 rounded-full bg-muted-foreground/20 text-muted-foreground flex items-center justify-center font-medium">
          2
         </div>
-        <span class="text-sm font-medium">
+        <span class="text-sm font-medium text-muted-foreground">
          주문완료
         </span>
        </div>
       </div>
      </div>
     </div>
-    <div class="container mx-auto px-4 py-16">
-     <div class="max-w-2xl mx-auto text-center">
-      <div class="mb-8">
-       <h1 class="text-4xl font-bold text-foreground mb-4">
-        구매해주셔서 감사합니다!
-       </h1>
-       <p class="text-lg text-muted-foreground mb-2">
-        주문이 성공적으로 완료되었습니다.
-       </p>
-       <p class="text-sm text-muted-foreground">
-        주문 확인 메일이 발송되었습니다.
-       </p>
-      </div>
-      <div class="bg-card border rounded-lg p-8 mb-8">
-       <div class="space-y-4">
-        <div class="flex justify-between items-center pb-4 border-b">
-         <span class="text-muted-foreground">
-          주문번호
-         </span>
-         <span class="font-mono font-medium">
-          JQ7YZON0SAA
-         </span>
+    <div class="container mx-auto px-4 py-8">
+     <div class="max-w-4xl mx-auto">
+      <h1 class="text-3xl font-bold text-foreground mb-8">
+       주문/결제
+      </h1>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+       <div class="lg:col-span-2 space-y-6">
+        <div class="bg-card border rounded-lg p-6">
+         <h2 class="font-semibold text-lg mb-4">
+          주문 상품
+         </h2>
+         <div class="flex gap-4">
+          <div class="w-24 h-24 rounded overflow-hidden bg-muted flex-shrink-0">
+           <img alt="Dell Inspiron 15 3520" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=500&amp;q=80"/>
+          </div>
+          <div class="flex-1">
+           <h3 class="font-medium mb-2">
+            Dell Inspiron 15 3520
+           </h3>
+           <p class="text-xl font-bold text-primary">
+            590,000원
+           </p>
+          </div>
+         </div>
         </div>
-        <div class="flex justify-between items-center pb-4 border-b">
-         <span class="text-muted-foreground">
-          결제수단
-         </span>
-         <span class="font-medium">
-          무통장입금
-         </span>
+        <div class="bg-card border rounded-lg p-6">
+         <h2 class="font-semibold text-lg mb-4">
+          배송 정보
+         </h2>
+         <div class="space-y-4">
+          <div>
+           <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="name">
+            이름
+           </label>
+           <input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" id="name" placeholder="홍길동" value="홍길동"/>
+          </div>
+          <div>
+           <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="phone">
+            연락처
+           </label>
+           <input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" id="phone" placeholder="010-1234-5678" value="010-1234-5678"/>
+          </div>
+          <div>
+           <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="address">
+            배송 주소
+           </label>
+           <input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" id="address" placeholder="서울시 강남구..." value="서울시 강남구 테헤란로"/>
+          </div>
+         </div>
         </div>
-        <div class="flex justify-between items-center">
-         <span class="text-muted-foreground">
-          입금계좌
-         </span>
-         <div class="text-right">
-          <p class="font-medium">
-           국민은행 123-456-789012
-          </p>
-          <p class="text-sm text-muted-foreground">
-           예금주: (주)노트픽
-          </p>
+        <div class="bg-card border rounded-lg p-6">
+         <h2 class="font-semibold text-lg mb-4">
+          결제 수단
+         </h2>
+         <div aria-required="false" class="grid gap-2" dir="ltr" role="radiogroup" style="outline: none;" tabindex="0">
+          <div class="space-y-3">
+           <div class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-muted/50 cursor-pointer">
+            <button aria-checked="false" class="aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" data-radix-collection-item="" data-state="unchecked" id="card" role="radio" tabindex="-1" type="button" value="card">
+            </button>
+            <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2 cursor-pointer flex-1" for="card">
+             <span>
+              카드 간편결제
+             </span>
+            </label>
+           </div>
+           <div class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-muted/50 cursor-pointer">
+            <button aria-checked="true" class="aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" data-radix-collection-item="" data-state="checked" id="bank" role="radio" tabindex="0" type="button" value="bank">
+             <span class="flex items-center justify-center" data-state="checked">
+             </span>
+            </button>
+            <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2 cursor-pointer flex-1" for="bank">
+             <span>
+              무통장입금
+             </span>
+            </label>
+           </div>
+          </div>
          </div>
         </div>
        </div>
-      </div>
-      <div class="bg-yellow-50 dark:bg-yellow-950 border border-yellow-200 dark:border-yellow-800 rounded-lg p-6 mb-8">
-       <h3 class="font-semibold mb-2">
-        입금 안내
-       </h3>
-       <p class="text-sm text-muted-foreground">
-        입금 확인 후 상품이 발송됩니다. 주문 후 3일 이내 입금이 확인되지 않으면 주문이 자동 취소됩니다.
-       </p>
-      </div>
-      <div class="flex gap-4 justify-center">
-       <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8" data-testid="button-continue-shopping">
-        쇼핑 계속하기
-       </button>
-       <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8" data-testid="button-go-home">
-        홈으로 가기
-       </button>
+       <div class="lg:col-span-1">
+        <div class="bg-card border rounded-lg p-6 sticky top-20">
+         <h2 class="font-semibold text-lg mb-4">
+          결제 정보
+         </h2>
+         <div class="space-y-3 mb-6">
+          <div class="flex justify-between text-sm">
+           <span class="text-muted-foreground">
+            상품 금액
+           </span>
+           <span class="font-medium">
+            590,000원
+           </span>
+          </div>
+          <div class="flex justify-between text-sm">
+           <span class="text-muted-foreground">
+            배송비
+           </span>
+           <span class="font-medium">
+            무료
+           </span>
+          </div>
+          <div class="flex justify-between text-sm text-green-600">
+           <span>
+            5% 신규가입 쿠폰
+           </span>
+           <span>
+            -29,500원
+           </span>
+          </div>
+          <div class="border-t pt-3 flex justify-between">
+           <span class="font-semibold">
+            총 결제 금액
+           </span>
+           <span class="text-2xl font-bold text-primary">
+            560,500원
+           </span>
+          </div>
+         </div>
+         <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8 w-full" data-testid="button-payment">
+          결제하기
+         </button>
+         <p class="text-xs text-muted-foreground mt-4 text-center">
+          주문 시 개인정보 수집·이용 및 결제대행 서비스 이용약관에 동의하게 됩니다.
+         </p>
+        </div>
+       </div>
       </div>
      </div>
     </div>

@@ -4,24 +4,41 @@
             <a ax-id=aid-2 href=/> NotePick
               <h1> NotePick
             <nav>
-              <a ax-id=aid-1 href=/> 홈
-              <a ax-id=aid-3 href=/products> 전체
+              <a ax-id=aid-7 href=/> 홈
+              <a ax-id=aid-14 href=/products> 전체
+              <div> 1
               <span> 주문/결제
               <div> 2
               <span> 주문완료
-            <h1> 구매해주셔서 감사합니다!
-            <p> 주문이 성공적으로 완료되었습니다.
-            <p> 주문 확인 메일이 발송되었습니다.
-                <span> 주문번호
-                <span> JQ7YZON0SAA
-                <span> 결제수단
-                <span> 무통장입금
-                <span> 입금계좌
-                  <p> 국민은행 123-456-789012
-                  <p> 예금주: (주)노트픽
-            <h3> 입금 안내
-            <p> 입금 확인 후 상품이 발송됩니다. 주문 후 3일 이내 입금이 확인되지 않으면 주문이 자동 취소됩니다.
-            <button ax-id=aid-4 data-testid=button-continue-shopping> 쇼핑 계속하기
-            <button ax-id=aid-5 data-testid=button-go-home> 홈으로 가기
+          <h1> 주문/결제
+                <h2> 주문 상품
+                    <img alt=Dell Inspiron 15 3520>
+                    <h3> Dell Inspiron 15 3520
+                    <p> 590,000원
+                <h2> 배송 정보
+                    <label ax-id=aid-12 for=name> 이름
+                    <input ax-id=aid-8 id=name placeholder=홍길동 value="홍길동">
+                    <label ax-id=aid-13 for=phone> 연락처
+                    <input ax-id=aid-11 id=phone placeholder=010-1234-5678 value="010-1234-5678">
+                    <label ax-id=aid-6 for=address> 배송 주소
+                    <input ax-id=aid-1 id=address placeholder=서울시 강남구... value="서울시 강남구 테헤란로">
+                <h2> 결제 수단
+                      <button ax-id=aid-5>
+                      <label ax-id=aid-3 for=card> 카드 간편결제
+                        <span> 카드 간편결제
+                      <button ax-id=aid-10>
+                      <label ax-id=aid-9 for=bank> 무통장입금
+                        <span> 무통장입금
+                <h2> 결제 정보
+                    <span> 상품 금액
+                    <span> 590,000원
+                    <span> 배송비
+                    <span> 무료
+                    <span> 5% 신규가입 쿠폰
+                    <span> -29,500원
+                    <span> 총 결제 금액
+                    <span> 560,500원
+                <button ax-id=aid-4 data-testid=button-payment> 결제하기
+                <p> 주문 시 개인정보 수집·이용 및 결제대행 서비스 이용약관에 동의하게 됩니다.
       <footer>
           <p> © 2024 NotePick. All rights reserved.

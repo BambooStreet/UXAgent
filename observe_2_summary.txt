@@ -6,30 +6,32 @@
       <ol>
     <section>
       <header>
-            <a ax-id=aid-7 href=/> NotePick
+            <a ax-id=aid-10 href=/> NotePick
               <h1> NotePick
             <nav>
-              <a ax-id=aid-6 href=/> 홈
-              <a ax-id=aid-15 href=/products> 전체
-              <img alt=ASUS ROG Strix G15 G513>
-              <h1> ASUS ROG Strix G15 G513
-                  <span> 4.8
-                <span> (567 리뷰)
-              <p> 2,490,000원
+              <a ax-id=aid-1 href=/> 홈
+              <a ax-id=aid-14 href=/products> 전체
+              <img alt=HP Pavilion Gaming 15-ec2>
+              <h1> HP Pavilion Gaming 15-ec2
+                  <span> 4.3
+                <span> (289 리뷰)
+                <div> 13% 할인
+                <span> 1,490,000원
+              <p> 1,290,000원
               <h3> 주요 스펙
                   <p> 프로세서
-                  <p> AMD Ryzen 9 7940HS
+                  <p> Intel Core i5-12500H
                   <p> 메모리
-                  <p> 32GB DDR5
+                  <p> 16GB DDR4
                   <p> 저장장치
-                  <p> 1TB NVMe SSD
+                  <p> 512GB NVMe SSD
                   <p> 디스플레이
-                  <p> 15.6인치 QHD 240Hz
+                  <p> 15.6인치 FHD 144Hz
           <h3> 같이 구매하면 좋은 제품
                   <h3> 🖱️ 마우스 특가전!
                   <p> 노트북과 함께 구매하면 10% 추가 할인
-                  <button ax-id=aid-1 data-testid=button-carousel-prev>
-                  <button ax-id=aid-8 data-testid=button-carousel-next>
+                  <button ax-id=aid-12 data-testid=button-carousel-prev>
+                  <button ax-id=aid-9 data-testid=button-carousel-next>
                       <div> 13% OFF
                         <img alt=로지텍 MX Master 3S>
                       <h4> 로지텍 MX Master 3S
@@ -54,90 +56,90 @@
                         <img alt=코르세어 다크코어 RGB>
                       <h4> 코르세어 다크코어 RGB
                         <p> 129,000원
-          <button ax-id=aid-2> 더 알아보기
-            <h3> 고객 리뷰 (567)
-            <button ax-id=aid-9 data-testid=button-view-all-reviews> 전체보기
+          <button ax-id=aid-13> 더 알아보기
+            <h3> 고객 리뷰 (289)
+            <button ax-id=aid-5 data-testid=button-view-all-reviews> 전체보기
                   <span> 사용자1
                     <span> 5
-                <span> 2024-1-14
+                <span> 2024-10-1
               <p> 정말 만족스러운 구매였습니다. 배송도 빠르고 제품 상태도 완벽했어요. 성능이 기대 이상이라 작업할 때 정말 편합니다.
                   <span> 사용자2
-                    <span> 5
-                <span> 2024-6-27
+                    <span> 4
+                <span> 2024-1-23
               <p> 가성비가 정말 좋네요! 이 가격에 이런 스펙을 가진 노트북을 찾기 힘들 것 같아요. 디자인도 세련되고 가볍습니다.
                   <span> 사용자3
-                    <span> 4
-                <span> 2024-1-18
+                    <span> 5
+                <span> 2024-1-10
               <p> 배터리 지속시간이 생각보다 길어서 좋아요. 하루 종일 사용해도 충전 걱정이 없습니다. 화면도 선명하고 밝기도 충분해요.
                   <span> 사용자4
-                    <span> 4
-                <span> 2024-9-9
+                    <span> 5
+                <span> 2024-6-3
               <p> 처음엔 고민했는데 구매하길 잘했어요. 발열도 적고 소음도 거의 없습니다. 영상 편집 작업에도 무리 없이 돌아가네요.
                   <span> 사용자5
-                    <span> 4
-                <span> 2024-10-6
+                    <span> 5
+                <span> 2024-10-22
               <p> 디스플레이 품질이 정말 훌륭합니다. 색감도 정확하고 시야각도 넓어서 작업하기 편해요. 키보드 타건감도 좋습니다.
                   <span> 사용자6
-                    <span> 5
-                <span> 2024-12-26
+                    <span> 4
+                <span> 2024-3-9
               <p> 무게가 가벼워서 들고 다니기 편해요. 외근이 잦은 저에게 딱 맞는 제품입니다. 성능도 충분하고 만족스러워요.
                   <span> 사용자7
-                    <span> 5
-                <span> 2024-4-10
+                    <span> 4
+                <span> 2024-2-25
               <p> 게임도 잘 돌아가고 발열 관리도 잘 되네요. 쿨링팬 소리가 조금 있긴 하지만 성능을 생각하면 감수할 만합니다.
                   <span> 사용자8
                     <span> 5
-                <span> 2024-3-8
+                <span> 2024-4-1
               <p> 학생인데 과제하기 딱 좋아요. 여러 프로그램 동시에 켜도 버벅임 없이 잘 돌아갑니다. 가격도 합리적이에요.
                   <span> 사용자9
                     <span> 4
-                <span> 2024-2-7
+                <span> 2024-10-21
               <p> 예쁜 디자인에 성능도 좋아서 정말 마음에 듭니다. 주변 사람들도 다 예쁘다고 하네요. 휴대성도 좋고 최고예요!
                   <span> 사용자10
                     <span> 5
-                <span> 2024-8-4
+                <span> 2024-3-20
               <p> SSD 속도가 빨라서 부팅도 금방 되고 프로그램 실행도 빠릅니다. 업무 효율이 확실히 올라갔어요.
                   <span> 사용자11
                     <span> 4
-                <span> 2024-1-17
+                <span> 2024-3-13
               <p> 화면이 크고 선명해서 영상 시청하기 좋아요. 스피커 음질도 괜찮은 편입니다. 넷플릭스 보기 딱 좋네요.
                   <span> 사용자12
                     <span> 5
-                <span> 2024-3-8
+                <span> 2024-10-24
               <p> 키보드 백라이트가 있어서 어두운 곳에서도 작업하기 편해요. 터치패드 반응도 민감하고 좋습니다.
                   <span> 사용자13
-                    <span> 5
-                <span> 2024-3-26
+                    <span> 4
+                <span> 2024-12-18
               <p> 가격 대비 정말 좋은 제품이에요. 친구한테도 추천했습니다. 디자인도 심플하고 세련되어서 마음에 들어요.
                   <span> 사용자14
-                    <span> 5
-                <span> 2024-11-7
+                    <span> 4
+                <span> 2024-1-7
               <p> 포트가 다양해서 편리해요. USB-C 충전도 되고 HDMI 포트도 있어서 모니터 연결하기 좋습니다.
                   <span> 사용자15
                     <span> 4
-                <span> 2024-11-16
+                <span> 2024-10-18
               <p> 처음 노트북 구매하는데 너무 만족스러워요. 사용법도 쉽고 성능도 좋아서 추천합니다!
                   <span> 사용자16
                     <span> 4
-                <span> 2024-7-22
+                <span> 2024-5-7
               <p> 배송 빠르고 포장도 꼼꼼했어요. 제품 상태 완벽하고 액정 보호필름도 붙어있어서 좋았습니다.
                   <span> 사용자17
-                    <span> 4
-                <span> 2024-2-12
+                    <span> 5
+                <span> 2024-5-11
               <p> 업그레이드한 보람이 있네요. 이전 노트북보다 훨씬 빠르고 쾌적합니다. 멀티태스킹도 문제없어요.
                   <span> 사용자18
                     <span> 4
-                <span> 2024-4-11
+                <span> 2024-5-11
               <p> 재택근무용으로 샀는데 화상회의할 때 웹캠 화질도 좋고 마이크도 잘 잡혀요. 추천합니다!
                   <span> 사용자19
                     <span> 4
-                <span> 2024-8-28
+                <span> 2024-4-12
               <p> 얇고 가벼워서 가방에 넣고 다니기 편해요. 카페에서 작업할 때 정말 좋습니다. 배터리도 오래가요.
                   <span> 사용자20
                     <span> 5
-                <span> 2024-10-22
+                <span> 2024-2-9
               <p> 코딩 작업용으로 구매했는데 IDE 돌리기 딱 좋아요. RAM도 충분하고 컴파일 속도도 빠릅니다.
-            <button ax-id=aid-10 data-testid=button-purchase> 구매하기
-            <button ax-id=aid-11 data-testid=button-compare> 비교하기
+            <button ax-id=aid-8 data-testid=button-purchase> 구매하기
+            <button ax-id=aid-3 data-testid=button-compare> 비교하기
       <footer>
           <p> © 2024 NotePick. All rights reserved.
